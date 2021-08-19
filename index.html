@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cashflow Harian KBB</title>
+	<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="title">
+      Cashflow Harian KBB
+    </div>
+    <form name="cashflow-kbb">
+    <div class="form">
+      <div class="inputfield">
+        <label>Nama Petugas</label>
+        <div class="custom_select">
+            <select name="npetugas">
+            <option value="Sulaeman Afif">Sulaeman Afif</option>
+            <option value="Bani Nuzul Ramadhan">Bani Nuzul Ramadhan</option>
+            <option value="Beni Iskandar">Beni Iskandar</option>
+            <option value="Erni Lathipah">Erni Lathipah</option>
+            <option value="Hendri Herdiansyah S">Hendri Herdiansyah S</option>
+            <option value="Mohamad Saeful Ramadhan">Mohamad Saeful Ramadhan</option>
+            <option value="Rian Andriani Aziz">Rian Andriani Aziz</option>
+            <option value="Tendi Agus Maulana">Tendi Agus Maulana</option>
+          </select>
+        </div>
+     </div> 
+     <div class="inputfield">
+      <label>Hari Pelayanan</label>
+      <div class="custom_select">
+        <select name="hpelayanan">
+          <option value="Senin">Senin</option>
+          <option value="Selasa">Selasa</option>
+          <option value="Rabu">Rabu</option>
+          <option value="Kamis">Kamis</option>
+        </select>
+      </div>
+    </div>  
+       <div class="inputfield">
+          <label>Tanggal Pelayanan</label>
+          <input type="date" class="input petugas" name="tpelayanan">
+       </div>  
+      <div class="inputfield">
+          <label>Majelis</label>
+          <input type="text" class="input" name="nmajelis">
+       </div> 
+      <div class="inputfield">
+          <label>Modal Kas Awal</label>
+          <span>Rp</span>
+          <input type="text" class="input" name="mkasawal" id="kasAwal">
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Angsuran Ikhtiar</label>
+          <span>Rp</span>
+          <input type="text" class="input" name="angikhtiar" id="angikhtiar">
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Angsuran Individu</label>
+          <span>Rp</span>
+          <input type="text" class="input" name="angindividu">
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Total Angsuran</label>
+          <span>Rp</span>
+          <input type="text" class="input" readonly>
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Tabungan Sukarela</label>
+          <span>Rp</span>
+          <input type="text" class="input" name="tsukarela">
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Tabungan Berencana</label>
+          <span>Rp</span>
+          <input type="text" class="input" name="tberencana">
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Simpanan Wajib</label>
+          <span>Rp</span>
+          <input type="text" class="input" name="swajib">
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Infaq</label>
+          <span>Rp</span>
+          <input type="text" class="input" name="infaq">
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>K.Angsuran / Reg Taber</label>
+          <span>Rp</span>
+          <input type="text" class="input" >
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Buku Tabungan</label>
+          <span>Rp</span>
+          <input type="text" class="input" >
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Tambal Sulam (Rp)</label>
+          <span>Rp</span>
+          <input type="text" class="input" >
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Biaya Adm</label>
+          <span>Rp</span>
+          <input type="text" class="input" >
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Dana Kegiatan</label>
+          <span>Rp</span>
+          <input type="text" class="input" >
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Total ADM</label>
+          <span>Rp</span>
+          <input type="text" class="input" readonly>
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Asuransi</label>
+          <span>Rp</span>
+          <input type="text" class="input" >
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Droping (Rp)</label>
+          <span>Rp</span>
+          <input type="text" class="input" >
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Droping (PF)</label>
+          <input type="text" class="input" >
+       </div> 
+      <div class="inputfield">
+          <label>Pen Tab Sukarela</label>
+          <span>Rp</span>
+          <input type="text" class="input" >
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Pen Tab Berencana</label>
+          <span>Rp</span>
+          <input type="text" class="input" >
+          <span>.00</span>
+       </div> 
+    <div class="inputfield">
+          <label>Pengunduran Diri (Rp)</label>
+          <span>Rp</span>
+          <input type="text" class="input" >
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Saldo</label>
+          <span>Rp</span>
+          <input type="text" class="input" >
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Anggota Keluar (PF)</label>
+          <span>Rp</span>
+          <input type="text" class="input" >
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Tambal sulam (PF)</label>
+          <span>Rp</span>
+          <input type="text" class="input" >
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Reg Taber (PF)</label>
+          <span>Rp</span>
+          <input type="text" class="input" >
+          <span>.00</span>
+       </div> 
+      <div class="inputfield">
+          <label>Keterangan</label>
+          <textarea class="textarea" name="keterangan"></textarea>
+       </div>
+      <div class="inputfield">
+        <input type="submit" value="Simpan Cashflow" class="btn">
+      </div>
+    </div>
+    <form>
+</div>	
+	<script src="assets/autoNumeric/autoNumeric.min.js"></script>
+<script>
+   const scriptURL = 'https://script.google.com/macros/s/AKfycbyFiSWGwRC4xycLZyH8uxG5HCrzP7e4dXqeZsVjtcpJdzh7u4DVochwuViV-EEUhL4/exec'
+   const form = document.forms['cashflow-kbb']
+ 
+   form.addEventListener('submit', e => {
+     e.preventDefault()
+     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+       .then(response => console.log('Success!', response))
+       .catch(error => console.error('Error!', error.message))
+   })
+
+
+   new AutoNumeric('#kasAwal',{
+      decimalPlaces: '0',
+      decimalCharacter: ',',
+      digitGroupSeparator: '.'
+   })
+ </script>
+</body>
+</html>
