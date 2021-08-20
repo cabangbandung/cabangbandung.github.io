@@ -213,11 +213,14 @@
    })
 
 
-   new AutoNumeric('#kasAwal',{
+   // script AutoNumeric
+document.querySelectorAll('.inputfield input[type=text]').forEach((e) => {
+   new AutoNumeric(e, {
       decimalPlaces: '0',
       decimalCharacter: ',',
       digitGroupSeparator: '.'
-   })
+   });
+ });
  </script>
 </body>
 </html>
