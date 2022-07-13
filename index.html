@@ -1,226 +1,199 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Cashflow Harian KBB</title>
-	<link rel="stylesheet" href="assets/styles.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style2.css">
+    <title>Cashflow KBB</title>
 </head>
+
 <body>
+    <section>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="box">
+            <div class="container">
+                <div class="form">
+                    <div class="menu-circle"></div>
+                    <h2 class="text-center">Input Cashflow KBB</h2>
+                    <div class="alert alert-dismissible fade show d-none my-alert" role="alert">
+                        <strong>Berhasil!</strong> Hore......
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <form action="" name="cashflow-kbb">
+                        <div class="inputBox" id="select-petugas">
+                            <label for="">Nama Petugas</label>
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Hari Pelayanan</label>
+                            <select name="hpelayanan" id="">
+                                <option value="-">-</option>
+                                <option value="Senin">Senin</option>
+                                <option value="Selasa">Selasa</option>
+                                <option value="Rabu">Rabu</option>
+                                <option value="Kamis">Kamis</option>
+                            </select>
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Minggu Ke</label>
+                            <select name="keterangan" id="">
+                                <option value="-">-</option>
+                                <option value="Minggu ke 1">Minggu ke 1</option>
+                                <option value="Minggu ke 2">Minggu ke 2</option>
+                                <option value="Minggu ke 3">Minggu ke 3</option>
+                                <option value="Minggu ke 4">Minggu ke 4</option>
+                                <option value="Minggu ke 5">Minggu ke 5</option>
+                            </select>
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Tanggal Pelayanan</label>
+                            <input type="date" name="tpelayanan" placeholder="Tanggal Pelayanan">
+                        </div>
+                        <div class="inputBox1">
+                            <label for="">Nama Kelompok</label>
+                            <input type="text" name="nmajelis" id="majelis" required>
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Modal Kas Awal</label>
+                            <input type="text" name="mkasawal" placeholder="0" oninput="hitungSaldo()">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Angsuran Ikhtiar</label>
+                            <input type="text" name="angikhtiar" placeholder="0" id="rupiah"
+                                oninput="hitungTotal(); hitungSaldo()">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Angsuran Individu</label>
+                            <input type="text" name="angindividu" placeholder="0"
+                                oninput="hitungTotal(); hitungSaldo()">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Total Angsuran</label>
+                            <input type="text" name="tangsuran" placeholder="0" id="tangsuran" readonly>
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Tabungan Sukaela</label>
+                            <input type="text" name="tsukarela" placeholder="0" oninput="hitungSaldo()">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Tabungan Berencana</label>
+                            <input type="text" name="tberencana" placeholder="0" oninput="hitungSaldo()">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Simpanan Wajib</label>
+                            <input type="text" name="swajib" placeholder="0" oninput="hitungSaldo()">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Infaq</label>
+                            <input type="text" name="infaq" placeholder="0" oninput="hitungSaldo()">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Kartu Angsuran / reg Taber</label>
+                            <input type="text" name="ka" placeholder="0" oninput="hitungKartu(); hitungSaldo()">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Buku Tabungan</label>
+                            <input type="text" name="bt" placeholder="0" oninput="hitungSaldo()">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Tambal Sulam</label>
+                            <input type="text" name="tsulamrp" placeholder="0"
+                                oninput="hitungSaldo(); tambalSulam(); hitungSaldo()">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Biaya Admin</label>
+                            <input type="text" name="adm" placeholder="0" class=""
+                                oninput="hitungAdmin(); hitungSaldo()">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Dana Kegiatan</label>
+                            <input type="text" name="kegiatan" placeholder="0" class=""
+                                oninput="hitungAdmin(); hitungSaldo()">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Total Admin</label>
+                            <input type="text" name="tadm" placeholder="0" class="" readonly>
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Asuransi</label>
+                            <input type="text" name="asuransi" placeholder="0" oninput="hitungSaldo()">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Droping Rupiah</label>
+                            <input type="text" name="dropingrp" placeholder="0" oninput="hitungSaldo()">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Droping Portofolio</label>
+                            <input type="text" name="dropingpf" placeholder="0">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Penarikan Tabungan Sukarela</label>
+                            <input type="text" name="pensukarela" placeholder="0" oninput="hitungSaldo()">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Pencairan Tabungan Berencana</label>
+                            <input type="text" name="penberencana" placeholder="0" oninput="hitungSaldo()">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Pencairan Pengunduran Diri</label>
+                            <input type="text" name="pengundurandiri" placeholder="0" oninput="hitungSaldo()">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Saldo</label>
+                            <input type="text" name="saldo" placeholder="0">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Anggota Keluar (PF)</label>
+                            <input type="text" name="akpf">
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Tambal Sulam (PF)</label>
+                            <input type="text" name="tspf" readonly>
+                        </div>
+                        <div class="inputBox">
+                            <label for="">Registrasi Taber (PF)</label>
+                            <input type="text" name="rtpf" readonly>
+                            <!-- </div>
+                        <div class="inputBox">
+                            <label for="">Minggu Ke</label>
+                            <textarea name="keterangan"></textarea>
+                        </div> -->
+                            <!-- <div class="inputBox">
+                  <input type="submit" value="Simpan" class="btn-kirim">
+                </div> -->
+                            <div class="text-center">
+                                <button class="btn-kirim" style="color: #333;" type="submit">Simpan</button>
+                                <button class="btn-loading d-none" type="button" disabled>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
 
-<div class="wrapper">
-    <div class="title">
-      Cashflow Harian KBB
-    </div>
-    <form name="cashflow-kbb">
-    <div class="form">
-      <div class="inputfield">
-        <label>Nama Petugas</label>
-        <div class="custom_select">
-            <select name="npetugas">
-            <option value="Sulaeman Afif">Sulaeman Afif</option>
-            <option value="Bani Nuzul Ramadhan">Bani Nuzul Ramadhan</option>
-            <option value="Beni Iskandar">Beni Iskandar</option>
-            <option value="Erni Lathipah">Erni Lathipah</option>
-            <option value="Hendri Herdiansyah S">Hendri Herdiansyah S</option>
-            <option value="Mohamad Saeful Ramadhan">Mohamad Saeful Ramadhan</option>
-            <option value="Rian Andriani Aziz">Rian Andriani Aziz</option>
-            <option value="Tendi Agus Maulana">Tendi Agus Maulana</option>
-          </select>
+                                </button>
+                                <a href="https://docs.google.com/spreadsheets/d/1LSzQVjb1SWTHVi0UQIa5_ab4-iN58MSm20zlFX0-LOs/edit#gid=1836176243"
+                                    class="btn btn-info rounded-pill ms-3"><i class="fas fa-eye"
+                                        style="color: #333;"></i>
+                                    Lihat
+                                    Hasil</a>
+                            </div>
+                    </form>
+                </div>
+            </div>
         </div>
-     </div> 
-     <div class="inputfield">
-      <label>Hari Pelayanan</label>
-      <div class="custom_select">
-        <select name="hpelayanan">
-          <option value="Senin">Senin</option>
-          <option value="Selasa">Selasa</option>
-          <option value="Rabu">Rabu</option>
-          <option value="Kamis">Kamis</option>
-        </select>
-      </div>
-    </div>  
-       <div class="inputfield">
-          <label>Tanggal Pelayanan</label>
-          <input type="date" class="input petugas" name="tpelayanan">
-       </div>  
-      <div class="inputfield">
-          <label>Majelis</label>
-          <input type="text" class="input" name="nmajelis">
-       </div> 
-      <div class="inputfield">
-          <label>Modal Kas Awal</label>
-          <span>Rp</span>
-          <input type="text" class="input" name="mkasawal" id="kasAwal">
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Angsuran Ikhtiar</label>
-          <span>Rp</span>
-          <input type="text" class="input" name="angikhtiar" id="angikhtiar">
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Angsuran Individu</label>
-          <span>Rp</span>
-          <input type="text" class="input" name="angindividu">
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Total Angsuran</label>
-          <span>Rp</span>
-          <input type="text" class="input" readonly>
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Tabungan Sukarela</label>
-          <span>Rp</span>
-          <input type="text" class="input" name="tsukarela">
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Tabungan Berencana</label>
-          <span>Rp</span>
-          <input type="text" class="input" name="tberencana">
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Simpanan Wajib</label>
-          <span>Rp</span>
-          <input type="text" class="input" name="swajib">
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Infaq</label>
-          <span>Rp</span>
-          <input type="text" class="input" name="infaq">
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>K.Angsuran / Reg Taber</label>
-          <span>Rp</span>
-          <input type="text" class="input" >
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Buku Tabungan</label>
-          <span>Rp</span>
-          <input type="text" class="input" >
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Tambal Sulam (Rp)</label>
-          <span>Rp</span>
-          <input type="text" class="input" >
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Biaya Adm</label>
-          <span>Rp</span>
-          <input type="text" class="input" >
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Dana Kegiatan</label>
-          <span>Rp</span>
-          <input type="text" class="input" >
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Total ADM</label>
-          <span>Rp</span>
-          <input type="text" class="input" readonly>
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Asuransi</label>
-          <span>Rp</span>
-          <input type="text" class="input" >
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Droping (Rp)</label>
-          <span>Rp</span>
-          <input type="text" class="input" >
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Droping (PF)</label>
-          <input type="text" class="input" >
-       </div> 
-      <div class="inputfield">
-          <label>Pen Tab Sukarela</label>
-          <span>Rp</span>
-          <input type="text" class="input" >
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Pen Tab Berencana</label>
-          <span>Rp</span>
-          <input type="text" class="input" >
-          <span>.00</span>
-       </div> 
-    <div class="inputfield">
-          <label>Pengunduran Diri (Rp)</label>
-          <span>Rp</span>
-          <input type="text" class="input" >
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Saldo</label>
-          <span>Rp</span>
-          <input type="text" class="input" >
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Anggota Keluar (PF)</label>
-          <span>Rp</span>
-          <input type="text" class="input" >
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Tambal sulam (PF)</label>
-          <span>Rp</span>
-          <input type="text" class="input" >
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Reg Taber (PF)</label>
-          <span>Rp</span>
-          <input type="text" class="input" >
-          <span>.00</span>
-       </div> 
-      <div class="inputfield">
-          <label>Keterangan</label>
-          <textarea class="textarea" name="keterangan"></textarea>
-       </div>
-      <div class="inputfield">
-        <input type="submit" value="Simpan Cashflow" class="btn">
-      </div>
-    </div>
-    <form>
-</div>	
-	<script src="assets/autoNumeric/autoNumeric.min.js"></script>
-<script>
-   const scriptURL = 'https://script.google.com/macros/s/AKfycbyFiSWGwRC4xycLZyH8uxG5HCrzP7e4dXqeZsVjtcpJdzh7u4DVochwuViV-EEUhL4/exec'
-   const form = document.forms['cashflow-kbb']
- 
-   form.addEventListener('submit', e => {
-     e.preventDefault()
-     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-       .then(response => console.log('Success!', response))
-       .catch(error => console.error('Error!', error.message))
-   })
-
-
-   // script AutoNumeric
-document.querySelectorAll('.inputfield input[type=text]').forEach((e) => {
-   new AutoNumeric(e, {
-      decimalPlaces: '0',
-      decimalCharacter: ',',
-      digitGroupSeparator: '.'
-   });
- });
- </script>
+    </section>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="script.js"></script>
+    <script src="autoNumeric.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 </body>
+
 </html>
